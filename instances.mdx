@@ -1,0 +1,100 @@
+# Instances Functions Documentation
+
+This section covers functions related to managing and interacting with Roblox instances, including retrieving instances, controlling scriptability, and accessing hidden properties.
+
+---
+
+## Functions
+
+### `getcallbackvalue(function): any`
+
+Retrieves the internal callback value associated with a given function. Useful for inspecting or manipulating function callbacks.
+
+**Parameters:**
+
+- `function`: The function to get the callback value from.
+
+**Returns:** The callback value linked to the function.
+
+---
+
+### `getnilinstances(): table`
+
+Returns a list of instances that are currently `nil` or no longer valid in the game environment.
+
+**Returns:** Table of nil or invalid instances.
+
+---
+
+### `getinstances(): table`
+
+Fetches all Roblox instances currently loaded in the game environment.
+
+**Returns:** Table containing all instances.
+
+---
+
+### `setscriptable(instance, bool): void`
+
+Sets whether the specified instance is scriptable, allowing or restricting script access.
+
+**Parameters:**
+
+- `instance`: The instance to modify.
+- `bool`: Boolean value to set scriptability (`true` or `false`).
+
+---
+
+### `isscriptable(instance): boolean`
+
+Checks if the specified instance is currently scriptable.
+
+**Parameters:**
+
+- `instance`: The instance to check.
+
+**Returns:** `true` if scriptable, otherwise `false`.
+
+---
+
+### `gethiddenproperty(instance, propertyName): any`
+
+Retrieves a hidden property from an instance, properties that are normally inaccessible through standard Roblox APIs.
+
+**Parameters:**
+
+- `instance`: The instance to query.
+- `propertyName`: The name of the hidden property to retrieve.
+
+**Returns:** The value of the hidden property.
+
+---
+
+### `sethiddenproperty(instance, propertyName, value): void`
+
+Sets a hidden property on the specified instance.
+
+**Parameters:**
+
+- `instance`: The instance to modify.
+- `propertyName`: The name of the hidden property to set.
+- `value`: The value to assign to the hidden property.
+
+---
+
+### Usage Example
+
+```lua
+local allInstances = getinstances()
+for _, inst in ipairs(allInstances) do
+    if isscriptable(inst) then
+        print("Instance is scriptable:", inst.Name)
+    end
+end
+
+local myInstance = allInstances[1]
+setscriptable(myInstance, true)
+local hiddenValue = gethiddenproperty(myInstance, "SomeHiddenProperty")
+print("Hidden property value:", hiddenValue)
+sethiddenproperty(myInstance, "SomeHiddenProperty", "NewValue")
+```
