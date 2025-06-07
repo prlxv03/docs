@@ -17,7 +17,7 @@ Creates a new safe C closure wrapper around the given Lua or C function.
   A new C closure that wraps the original function, with enhanced error handling.
 
 ```lua
-local safeFunc = closures.newcclosure(originalFunc)
+local safeFunc = newcclosure(originalFunc)
 safeFunc()
 ````
 
@@ -34,7 +34,7 @@ Checks whether the given function is recognized as an executor closure (a Roblox
   `true` if the function is an executor closure; otherwise `false`.
 
 ```lua
-if closures.isexecutorclosure(func) then
+if isexecutorclosure(func) then
   print("This is an executor closure")
 end
 ```
@@ -52,7 +52,7 @@ Checks whether the given function is a C closure.
   `true` if the function is a C closure; otherwise `false`.
 
 ```lua
-if closures.iscclosure(func) then
+if iscclosure(func) then
   print("This is a C closure")
 end
 ```
@@ -70,7 +70,7 @@ Checks whether the given function is a Lua closure.
   `true` if the function is a Lua closure; otherwise `false`.
 
 ```lua
-if closures.islclosure(func) then
+if islclosure(func) then
   print("This is a Lua closure")
 end
 ```
@@ -79,7 +79,7 @@ end
 
 ### `hookfunction(targetFunc: function, hookFunc: function) -> integer`
 
-Hooks a target function, replacing its behavior with the hook function. Supports both Lua and C closures.
+Hooks a target function, replacing its behavior with the hook function. Supports both Lua and C 
 
 * **Parameters:**
   `targetFunc` — The function to hook.
@@ -89,7 +89,7 @@ Hooks a target function, replacing its behavior with the hook function. Supports
   An integer status code (usually 1 on success).
 
 ```lua
-closures.hookfunction(originalFunc, hookFunc)
+hookfunction(originalFunc, hookFunc)
 ```
 
 ---
@@ -107,7 +107,7 @@ Hooks a metamethod of the given object's metatable.
   An integer status code (usually 1 on success).
 
 ```lua
-closures.hookmetamethod(myTable, "__index", myHookFunction)
+hookmetamethod(myTable, "__index", myHookFunction)
 ```
 
 ---
@@ -120,7 +120,7 @@ Restores a previously hooked function to its original state.
   `func` — The hooked function to restore.
 
 ```lua
-closures.restorefunction(hookedFunc)
+restorefunction(hookedFunc)
 ```
 
 ---
@@ -136,7 +136,7 @@ Creates a deep copy of a Lua or C closure function.
   A new function identical to the input.
 
 ```lua
-local copyFunc = closures.clonefunction(originalFunc)
+local copyFunc = clonefunction(originalFunc)
 ```
 
 ---
@@ -161,12 +161,12 @@ local function hook()
   print("Hooked function!")
 end
 
-local safeOriginal = closures.newcclosure(original)
-closures.hookfunction(safeOriginal, hook)
+local safeOriginal = newcclosure(original)
+hookfunction(safeOriginal, hook)
 
 safeOriginal()  -- Output: Hooked function!
 
-closures.restorefunction(safeOriginal)
+restorefunction(safeOriginal)
 
 safeOriginal()  -- Output: Hello from original
 ```
