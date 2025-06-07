@@ -1,0 +1,250 @@
+
+# Script and Signal Utilities Documentation
+
+This section documents functions related to script management, signals, and thread identities, offering powerful tools for introspection, manipulation, and control within the scripting environment.
+
+---
+
+## Functions
+
+### `getcallingscript(): Script | nil`
+
+Returns the script object of the currently executing context.
+
+Example:
+
+```lua
+local script = getcallingscript()
+print("Calling script:", script)
+````
+
+---
+
+### `getrunningscripts(): table<Script>`
+
+Returns a table containing all scripts currently running in the environment.
+
+Example:
+
+```lua
+local scripts = getrunningscripts()
+for i, script in ipairs(scripts) do
+    print("Running script:", script.Name)
+end
+```
+
+---
+
+### `getloadedmodules(): table<ModuleScript>`
+
+Returns a table of all loaded ModuleScripts.
+
+Example:
+
+```lua
+local modules = getloadedmodules()
+for _, module in pairs(modules) do
+    print("Loaded module:", module.Name)
+end
+```
+
+---
+
+### `firetouchinterest(part1: BasePart, part2: BasePart, toggle: number): void`
+
+Simulates a touch event between two parts. The toggle argument controls touch state (0 = touch ended, 1 = touch started).
+
+> **Note:** Passing offsets is not supported; use exact parts.
+
+Example:
+
+```lua
+firetouchinterest(partA, partB, 1)  -- Touch start
+firetouchinterest(partA, partB, 0)  -- Touch end
+```
+
+---
+
+### `fireproximityprompt(prompt: ProximityPrompt): void`
+
+Triggers a ProximityPrompt as if a player interacted with it.
+
+Example:
+
+```lua
+fireproximityprompt(myProximityPrompt)
+```
+
+---
+
+### `firesignal(signal: RBXScriptSignal, ...): void`
+
+Fires the given Roblox signal, calling all connected listeners with optional arguments.
+
+Example:
+
+```lua
+firesignal(part.Touched, player)
+```
+
+---
+
+### `fireclickdetector(detector: ClickDetector): void`
+
+Simulates a click event on a ClickDetector.
+
+Example:
+
+```lua
+fireclickdetector(myClickDetector)
+```
+
+---
+
+### `getconnections(signal: RBXScriptSignal): table<Connection>`
+
+Returns a list of all connections bound to the given signal.
+
+Example:
+
+```lua
+local connections = getconnections(part.Touched)
+print(#connections .. " connections found")
+```
+
+---
+
+### `getsenv(script: Script): table`
+
+Retrieves the environment (upvalues, locals) associated with the specified script.
+
+Example:
+
+```lua
+local env = getsenv(myScript)
+print(env)
+```
+
+---
+
+### `getscripts(instance: Instance): table<Script>`
+
+Returns a list of all Script objects under the given instance.
+
+Example:
+
+```lua
+local scripts = getscripts(workspace)
+for _, script in pairs(scripts) do
+    print(script.Name)
+end
+```
+
+---
+
+### `getscriptclosure(func: function): table`
+
+Retrieves the closure (upvalue environment) of the given function.
+
+Example:
+
+```lua
+local closure = getscriptclosure(myFunction)
+print(closure)
+```
+
+---
+
+### `setidentity(identity: number): void`
+
+Sets the thread identity level, controlling permission levels.
+
+Example:
+
+```lua
+setidentity(2)  -- Set identity to level 2
+```
+
+Aliases: `setthreadcontext`, `setthreadidentity`
+
+---
+
+### `getidentity(): number`
+
+Returns the current thread identity level.
+
+Example:
+
+```lua
+local id = getidentity()
+print("Current thread identity:", id)
+```
+
+Aliases: `getthreadcontext`, `getthreadidentity`
+
+---
+
+### `getscriptbytecode(script: Script): string`
+
+Returns the bytecode of the specified script.
+
+Example:
+
+```lua
+local bytecode = getscriptbytecode(myScript)
+print(bytecode)
+```
+
+---
+
+### `checkcaller(): boolean`
+
+Checks if the current function call was initiated by the script environment (true) or external source (false).
+
+Example:
+
+```lua
+if checkcaller() then
+    print("Called internally")
+else
+    print("Called externally")
+end
+```
+
+---
+
+### `getscripthash(script: Script): string`
+
+Returns a hash string representing the script’s contents, useful for integrity checks.
+
+Example:
+
+```lua
+local hash = getscripthash(myScript)
+print("Script hash:", hash)
+```
+
+---
+
+### `getfunctionhash(func: function): string`
+
+Returns a hash string representing the function’s bytecode.
+
+Example:
+
+```lua
+local hash = getfunctionhash(myFunction)
+print("Function hash:", hash)
+```
+
+---
+
+### `replicatesignal(signal: RBXScriptSignal, ...): void`
+
+Replicates the firing of a signal, simulating it across clients or server as appropriate.
+
+Example:
+
+```lua
+replicatesignal(part.Touched, player)
+```

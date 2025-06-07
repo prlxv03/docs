@@ -1,83 +1,73 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "Autumn",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#F97316",
+    "light": "#FDBA74",
+    "dark": "#C2410C"
   },
   "favicon": "/favicon.svg",
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Getting Started",
         "groups": [
           {
-            "group": "Get Started",
+            "group": "Basics",
             "pages": [
               "index",
-              "quickstart",
-              "development"
-            ]
-          },
-          {
-            "group": "Essentials",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/settings",
-              "essentials/navigation",
-              "essentials/reusable-snippets"
+              "quickstart"
             ]
           }
         ]
       },
       {
-        "tab": "API Reference",
+        "tab": "Autumn's Features",
         "groups": [
           {
-            "group": "API Documentation",
+            "group": "Internal",
             "pages": [
-              "api-reference/introduction"
+              "introduction",
+              "ui",
+              "scripts"
             ]
           },
           {
-            "group": "Endpoint Examples",
+            "group": "Detection",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "overview",
+              "bypass",
+              "safety-tips"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Documentation",
+            "pages": [
+              "closures",
+              "cache",
+              "crypt",
+              "debug",
+              "filesystem",
+              "input",
+              "instances",
+              "metatable",
+              "script",
+              "websocket"
             ]
           }
         ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Community",
-          "href": "https://mintlify.com/community",
-          "icon": "slack"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
+    ]
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "/logo/image.png",
+    "dark": "/logo/image.png"
   },
   "navbar": {
     "links": [

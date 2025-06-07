@@ -1,0 +1,77 @@
+
+# Cache Library Documentation
+
+This document details all functions available in the `cache` library, including member functions and standalone functions.
+
+---
+
+## Member Functions
+
+### `cache.invalidate(key: string): void`
+
+Invalidates the cache entry associated with the given `key`.
+
+Example:
+
+```lua
+cache.invalidate("user_123")
+````
+
+---
+
+### `cache.iscached(key: string): boolean`
+
+Checks if a cache entry exists for the given `key`.
+
+Returns `true` if cached, otherwise `false`.
+
+Example:
+
+```lua
+local exists = cache.iscached("user_123")
+print(exists)  -- true or false
+```
+
+---
+
+### `cache.replace(key: string, value: any): void`
+
+Replaces the cached value for the specified `key` with `value`.
+
+Example:
+
+```lua
+cache.replace("user_123", {name = "Alice", age = 30})
+```
+
+---
+
+## Standalone Functions
+
+### `cloneref(obj: any): any`
+
+Creates and returns a clone (deep copy) of the reference `obj`.
+
+Example:
+
+```lua
+local original = {data = 123}
+local clone = cloneref(original)
+```
+
+---
+
+### `compareinstances(obj1: any, obj2: any): boolean`
+
+Compares two instances (objects) for equality.
+
+Returns `true` if they are considered the same instance or have equivalent content, otherwise `false`.
+
+Example:
+
+```lua
+local a = {x=1}
+local b = {x=1}
+local equal =  compareinstances(a, b)
+print(equal)  -- true or false depending on implementation
+```

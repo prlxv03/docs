@@ -1,0 +1,36 @@
+# WebSocket Functions Documentation
+
+This section documents the WebSocket interface, which supports both secure (`wss://`) and insecure (`ws://`) WebSocket connections.
+
+---
+
+## Functions
+
+### `connect(url: string): WebSocket`
+
+Establishes a WebSocket connection to the specified URL. Supports both secure (`wss://`) and insecure (`ws://`) protocols.
+
+**Parameters:**
+
+- `url`: The WebSocket URL to connect to. Must start with `ws://` or `wss://`.
+
+**Returns:** A WebSocket object with standard WebSocket methods and events.
+
+**Example:**
+
+```lua
+local ws = connect("wss://example.com/socket")
+
+ws:on("open", function()
+    print("WebSocket connection opened")
+end)
+
+ws:on("message", function(msg)
+    print("Received message:", msg)
+end)
+
+ws:on("close", function()
+    print("WebSocket connection closed")
+end)
+
+ws:send("Hello server!")

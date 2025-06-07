@@ -1,0 +1,88 @@
+
+# Metatable and Read-Only Utilities Documentation
+
+This section documents functions related to Lua metatables and read-only properties, enabling advanced manipulation of object behavior and protection mechanisms.
+
+---
+
+## Functions
+
+### `isreadonly(target: table): boolean`
+
+Checks if the given table or userdata is read-only.
+
+Example:
+
+```lua
+if isreadonly(myTable) then
+    print("Table is read-only")
+else
+    print("Table is writable")
+end
+````
+
+---
+
+### `setreadonly(target: table, flag: boolean): boolean`
+
+Sets or unsets the read-only status of the given table or userdata.
+
+Example:
+
+```lua
+setreadonly(myTable, true)  -- Make table read-only
+setreadonly(myTable, false) -- Make table writable again
+```
+
+---
+
+### `getnamecallmethod(): string`
+
+Retrieves the current namecall method from the environment, typically used to hook or inspect metamethod calls.
+
+Example:
+
+```lua
+local method = getnamecallmethod()
+print("Current namecall method:", method)
+```
+
+---
+
+### `setnamecallmethod(methodName: string): void`
+
+Overrides the current namecall method with a specified method name.
+
+Example:
+
+```lua
+setnamecallmethod("CustomMethod")
+```
+
+---
+
+### `getrawmetatable(target: table): table|nil`
+
+Returns the raw metatable of the given table or userdata, bypassing any `__metatable` protection.
+
+Example:
+
+```lua
+local mt = getrawmetatable(myTable)
+if mt then
+    print("Got raw metatable")
+end
+```
+
+---
+
+### `setrawmetatable(target: table, metatable: table): void`
+
+Sets the raw metatable of the given table or userdata, ignoring any protections.
+
+Example:
+
+```lua
+local newMT = {}
+setrawmetatable(myTable, newMT)
+```

@@ -1,0 +1,158 @@
+
+# File System Library Documentation
+
+This document describes the functions available for interacting with the file system.
+
+---
+
+## Functions
+
+### `isfile(path: string): boolean`
+
+Checks if the given `path` points to an existing file.  
+Returns `true` if it is a file, `false` otherwise.
+
+Example:
+
+```lua
+if isfile("data.txt") then
+    print("File exists")
+end
+````
+
+---
+
+### `isfolder(path: string): boolean`
+
+Checks if the given `path` points to an existing folder/directory.
+Returns `true` if it is a folder, `false` otherwise.
+
+Example:
+
+```lua
+if isfolder("configs") then
+    print("Folder exists")
+end
+```
+
+---
+
+### `readfile(path: string): string | nil`
+
+Reads and returns the contents of the file at `path`.
+Returns `nil` if the file does not exist or cannot be read.
+
+Example:
+
+```lua
+local content = readfile("notes.txt")
+print(content)
+```
+
+---
+
+### `writefile(path: string, data: string): boolean`
+
+Writes `data` to the file at `path`, overwriting existing content or creating a new file.
+Returns `true` on success, `false` otherwise.
+
+Example:
+
+```lua
+writefile("log.txt", "Log entry\n")
+```
+
+---
+
+### `listfiles(path: string): table`
+
+Returns a table (array) listing all files in the directory at `path`.
+Returns an empty table if the folder is empty or does not exist.
+
+Example:
+
+```lua
+local files = listfiles("docs")
+for _, file in ipairs(files) do
+    print(file)
+end
+```
+
+---
+
+### `makefolder(path: string): boolean`
+
+Creates a new folder/directory at the specified `path`.
+Returns `true` if successful, `false` otherwise.
+
+Example:
+
+```lua
+makefolder("new_folder")
+```
+
+---
+
+### `delfile(path: string): boolean`
+
+Deletes the file at the given `path`.
+Returns `true` on success, `false` otherwise.
+
+Example:
+
+```lua
+delfile("old_data.txt")
+```
+
+---
+
+### `delfolder(path: string): boolean`
+
+Deletes the folder at the given `path`.
+Returns `true` if the folder was deleted successfully, `false` otherwise.
+
+Example:
+
+```lua
+delfolder("temp_folder")
+```
+
+---
+
+### `getcustomasset(asset_name: string): string | nil`
+
+Retrieves the content of a custom asset by name.
+Returns the asset data as a string, or `nil` if not found.
+
+Example:
+
+```lua
+local asset_data = getcustomasset("logo.png")
+```
+
+---
+
+### `loadfile(path: string): function | nil`
+
+Loads a Lua chunk from the file at `path` and returns it as a function.
+Returns `nil` if the file cannot be loaded.
+
+Example:
+
+```lua
+local chunk = loadfile("script.lua")
+if chunk then chunk() end
+```
+
+---
+
+### `appendfile(path: string, data: string): boolean`
+
+Appends `data` to the end of the file at `path`. Creates the file if it does not exist.
+Returns `true` on success, `false` otherwise.
+
+Example:
+
+```lua
+appendfile("log.txt", "New log entry\n")
+```

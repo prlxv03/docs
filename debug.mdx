@@ -1,0 +1,163 @@
+
+# Debug Library Documentation
+
+This document covers all functions provided by the `debug` library for introspection and manipulation of Lua execution.
+
+---
+
+## Functions
+
+### `debug.setupvalue(func: function, upvalue_index: integer, value: any): string | nil`
+
+Sets the value of the upvalue at `upvalue_index` of the function `func` to `value`.  
+Returns the name of the upvalue or `nil` if the index is invalid.
+
+Example:
+
+```lua
+local function foo() local x = 10; return x end
+debug.setupvalue(foo, 1, 20)
+````
+
+---
+
+### `debug.getconstant(func: function, index: integer): any`
+
+Returns the constant at position `index` in the function `func`.
+
+Example:
+
+```lua
+local c = debug.getconstant(myfunc, 1)
+print(c)
+```
+
+---
+
+### `debug.getconstants(func: function): table`
+
+Returns a table containing all constants used by the function `func`.
+
+Example:
+
+```lua
+local consts = debug.getconstants(myfunc)
+for i, c in ipairs(consts) do print(i, c) end
+```
+
+---
+
+### `debug.getinfo(thread_or_func: thread | function, what: string, level?: integer): table`
+
+Returns a table with information about a function or the function running at a certain stack level.
+`what` specifies what information to retrieve.
+
+Example:
+
+```lua
+local info = debug.getinfo(1, "nSl")
+print(info.name, info.currentline)
+```
+
+---
+
+### `debug.getproto(func: function, index: integer): function | nil`
+
+Returns the prototype (inner function) at position `index` of the function `func`, or `nil` if none exists.
+
+Example:
+
+```lua
+local proto = debug.getproto(myfunc, 1)
+```
+
+---
+
+### `debug.getprotos(func: function): table`
+
+Returns a table of all inner functions (prototypes) of the given function `func`.
+
+Example:
+
+```lua
+local protos = debug.getprotos(myfunc)
+for i, p in ipairs(protos) do print(i, p) end
+```
+
+---
+
+### `debug.getstack(level: integer): table | nil`
+
+Returns the activation record (stack frame) at the given `level` in the call stack, or `nil` if invalid.
+
+Example:
+
+```lua
+local stack = debug.getstack(1)
+```
+
+---
+
+### `debug.getupvalue(func: function, upvalue_index: integer): (string, any) | nil`
+
+Returns the name and value of the upvalue with index `upvalue_index` in function `func`, or `nil` if invalid.
+
+Example:
+
+```lua
+local name, value = debug.getupvalue(myfunc, 1)
+print(name, value)
+```
+
+---
+
+### `debug.getupvalues(func: function): table`
+
+Returns a table with all upvalues (name-value pairs) of the function `func`.
+
+Example:
+
+```lua
+local upvalues = debug.getupvalues(myfunc)
+for name, value in pairs(upvalues) do print(name, value) end
+```
+
+---
+
+### `debug.setconstant(func: function, index: integer, value: any): boolean`
+
+Sets the constant at position `index` in function `func` to `value`.
+Returns `true` if successful, `false` otherwise.
+
+Example:
+
+```lua
+debug.setconstant(myfunc, 1, 42)
+```
+
+---
+
+### `debug.setstack(level: integer, info: table): boolean`
+
+Modifies the stack frame at `level` using data from `info` table.
+Returns `true` on success.
+
+Example:
+
+```lua
+local info = {currentline = 10}
+debug.setstack(1, info)
+```
+
+---
+
+### `debug.getregistry(): table`
+
+Returns the Lua registry table, a special table used by the Lua VM to store references.
+
+Example:
+
+```lua
+local registry = debug.getregistry()
+print(registry)
+```

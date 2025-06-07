@@ -1,0 +1,183 @@
+# Closures Module Documentation
+
+This module provides advanced manipulation of Lua closures for Roblox environments. It allows inspection, hooking, cloning, and safe invocation of closures with improved error handling.
+
+---
+
+## Available Functions
+
+### `newcclosure(func: function) -> function`
+
+Creates a new safe C closure wrapper around the given Lua or C function.
+
+- **Parameters:**  
+  `func` — A Lua or C function to wrap.
+
+- **Returns:**  
+  A new C closure that wraps the original function, with enhanced error handling.
+
+```lua
+local safeFunc = closures.newcclosure(originalFunc)
+safeFunc()
+````
+
+---
+
+### `isexecutorclosure(func: function) -> boolean`
+
+Checks whether the given function is recognized as an executor closure (a Roblox internal function).
+
+* **Parameters:**
+  `func` — The function to test.
+
+* **Returns:**
+  `true` if the function is an executor closure; otherwise `false`.
+
+```lua
+if closures.isexecutorclosure(func) then
+  print("This is an executor closure")
+end
+```
+
+---
+
+### `iscclosure(func: function) -> boolean`
+
+Checks whether the given function is a C closure.
+
+* **Parameters:**
+  `func` — The function to test.
+
+* **Returns:**
+  `true` if the function is a C closure; otherwise `false`.
+
+```lua
+if closures.iscclosure(func) then
+  print("This is a C closure")
+end
+```
+
+---
+
+### `islclosure(func: function) -> boolean`
+
+Checks whether the given function is a Lua closure.
+
+* **Parameters:**
+  `func` — The function to test.
+
+* **Returns:**
+  `true` if the function is a Lua closure; otherwise `false`.
+
+```lua
+if closures.islclosure(func) then
+  print("This is a Lua closure")
+end
+```
+
+---
+
+### `hookfunction(targetFunc: function, hookFunc: function) -> integer`
+
+Hooks a target function, replacing its behavior with the hook function. Supports both Lua and C closures.
+
+* **Parameters:**
+  `targetFunc` — The function to hook.
+  `hookFunc` — The function to replace or hook into the target.
+
+* **Returns:**
+  An integer status code (usually 1 on success).
+
+```lua
+closures.hookfunction(originalFunc, hookFunc)
+```
+
+---
+
+### `hookmetamethod(obj: any, methodName: string, hookFunc: function) -> integer`
+
+Hooks a metamethod of the given object's metatable.
+
+* **Parameters:**
+  `obj` — The object whose metamethod to hook.
+  `methodName` — The name of the metamethod (e.g. "\_\_index", "\_\_newindex").
+  `hookFunc` — The function to set as the new metamethod.
+
+* **Returns:**
+  An integer status code (usually 1 on success).
+
+```lua
+closures.hookmetamethod(myTable, "__index", myHookFunction)
+```
+
+---
+
+### `restorefunction(func: function) -> nil`
+
+Restores a previously hooked function to its original state.
+
+* **Parameters:**
+  `func` — The hooked function to restore.
+
+```lua
+closures.restorefunction(hookedFunc)
+```
+
+---
+
+### `clonefunction(func: function) -> function`
+
+Creates a deep copy of a Lua or C closure function.
+
+* **Parameters:**
+  `func` — The function to clone.
+
+* **Returns:**
+  A new function identical to the input.
+
+```lua
+local copyFunc = closures.clonefunction(originalFunc)
+```
+
+---
+
+## Notes
+
+* The module differentiates closures into **Lua closures** and **C closures** for precise handling.
+* Error handling is enhanced by stripping unnecessary call stack information for clearer error messages.
+* The library maintains internal mappings to handle wrapped closures and hooked functions securely.
+* Some functions require Roblox executor internal behaviors and may depend on specific Lua state contexts.
+
+---
+
+## Complete Example
+
+```lua
+local function original()
+  print("Hello from original")
+end
+
+local function hook()
+  print("Hooked function!")
+end
+
+local safeOriginal = closures.newcclosure(original)
+closures.hookfunction(safeOriginal, hook)
+
+safeOriginal()  -- Output: Hooked function!
+
+closures.restorefunction(safeOriginal)
+
+safeOriginal()  -- Output: Hello from original
+```
+
+---
+
+*For more detailed usage and advanced scenarios, please refer to the source code or contact the library maintainer.*
+
+```
+
+---
+
+If you want, I can help you add frontmatter or React components — just let me know!
+```

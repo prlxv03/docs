@@ -1,0 +1,142 @@
+
+# Input Library Documentation
+
+This document details the functions available for handling user input and interaction.
+
+---
+
+## Functions
+
+### `isrbxactive(): boolean`
+
+Checks if the Roblox window or game is currently active (focused).  
+Returns `true` if active, `false` otherwise.
+
+Aliases: `isgameactive`, `iswindowactive`
+
+Example:
+
+```lua
+if isrbxactive() then
+    print("Game window is active")
+end
+````
+
+---
+
+### Mouse Input Functions
+
+#### `mouse1click()`
+
+Simulates a click (press and release) of the left mouse button.
+
+Example:
+
+```lua
+mouse1click()
+```
+
+#### `mouse1press()`
+
+Simulates pressing down the left mouse button without releasing.
+
+Example:
+
+```lua
+mouse1press()
+```
+
+#### `mouse1release()`
+
+Simulates releasing the left mouse button.
+
+Example:
+
+```lua
+mouse1release()
+```
+
+#### `mouse2click()`
+
+Simulates a click (press and release) of the right mouse button.
+
+Example:
+
+```lua
+mouse2click()
+```
+
+#### `mouse2press()`
+
+Simulates pressing down the right mouse button without releasing.
+
+Example:
+
+```lua
+mouse2press()
+```
+
+#### `mouse2release()`
+
+Simulates releasing the right mouse button.
+
+Example:
+
+```lua
+mouse2release()
+```
+
+#### `mousemoveabs(x: number, y: number)`
+
+Moves the mouse cursor to the absolute screen coordinates `(x, y)`.
+
+Example:
+
+```lua
+mousemoveabs(500, 300)
+```
+
+#### `mousemoverel(dx: number, dy: number)`
+
+Moves the mouse cursor relative to its current position by `(dx, dy)` pixels.
+
+Example:
+
+```lua
+mousemoverel(10, -5)
+```
+
+#### `mousescroll(amount: number)`
+
+Simulates scrolling the mouse wheel by the specified amount. Positive values scroll up, negative scroll down.
+
+Example:
+
+```lua
+mousescroll(1)  -- scroll up
+```
+
+---
+
+### Keyboard Input Functions
+
+#### `keypress(keycode: number | string)`
+
+Simulates pressing and releasing a keyboard key.
+Alias: `keyclick`
+
+Example:
+
+```lua
+keypress("W")
+```
+
+#### `keyrelease(keycode: number | string)`
+
+Simulates releasing a keyboard key.
+
+Example:
+
+```lua
+keyrelease("W")
+```
