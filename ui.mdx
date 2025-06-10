@@ -91,7 +91,27 @@ Welcome to the comprehensive guide for creating and using custom themes in Autum
   border-radius: 8px;
 }
 ```
+## 🥵 Responsive Design
 
+```css
+@media (max-width: 1024px) {
+  .custom-theme-active .scripts-panel,
+  .custom-theme-active .settings-panel {
+    width: 200px;
+  }
+}
+@media (max-width: 768px) {
+  .custom-theme-active .tab {
+    min-width: 100px;
+    padding: 0 6px;
+  }
+  
+  .custom-theme-active .action-button {
+    padding: 2px 6px;
+    font-size: 11px;
+  }
+}
+```
 ## 🎯 Key CSS Classes
 
 ### Essential Selectors
