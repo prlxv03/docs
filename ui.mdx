@@ -23,3 +23,414 @@ Autumn offers both **Internal** and **External** user interfaces to meet the nee
 - The **External UI** is for users who prefer to manage settings and scripts outside of the game.
 
 No matter your style, Autumn has you covered.
+
+# Autumn Custom Theming System
+
+Welcome to the comprehensive guide for creating and using custom themes in Autumn! Our theming system allows you to completely transform the appearance of your Lua script editor with CSS.
+
+## 🎨 Getting Started
+
+### Quick Setup
+
+1. **Create the theme directory**: Create a folder named `theme` in the same directory as your Autumn executable
+2. **Add your theme**: Place any `.css` file in the `theme` folder
+3. **Automatic loading**: Themes are automatically detected and applied every second
+4. **Live updates**: Modify your theme file and see changes applied instantly
+
+```
+📁 Autumn.exe
+📁 theme/
+  └── 📄 my-awesome-theme.css
+  └── 📄 po.css (example theme)
+```
+
+## 🏗️ Theme Structure
+
+### Basic Theme Template
+
+```css
+/* Theme: My Awesome Theme */
+
+/* Main container - the foundation of your theme */
+.custom-theme-active .editor-container {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+/* Top bar styling */
+.custom-theme-active .top-bar {
+  background: #2d3748;
+  border-bottom: 2px solid #4a5568;
+}
+
+/* Tab styling */
+.custom-theme-active .tab {
+  background: rgba(45, 55, 72, 0.8);
+  color: #e2e8f0;
+}
+
+.custom-theme-active .tab.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+/* Editor background */
+.custom-theme-active .monaco-editor .monaco-editor-background {
+  background: #1a202c !important;
+}
+
+/* Action buttons */
+.custom-theme-active .action-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 8px;
+}
+```
+
+## 🎯 Key CSS Classes
+
+### Essential Selectors
+
+| Selector | Description |
+|----------|-------------|
+| `.custom-theme-active .editor-container` | Main application container |
+| `.custom-theme-active .top-bar` | Title bar with logo and controls |
+| `.custom-theme-active .tabs-bar` | Tab navigation area |
+| `.custom-theme-active .tab` | Individual tabs |
+| `.custom-theme-active .tab.active` | Currently active tab |
+| `.custom-theme-active .editor-wrapper` | Monaco editor container |
+| `.custom-theme-active .bottom-bar` | Bottom action bar |
+| `.custom-theme-active .action-button` | All action buttons |
+
+### Monaco Editor Customization
+
+```css
+/* Editor background */
+.custom-theme-active .monaco-editor .monaco-editor-background {
+  background: your-color !important;
+}
+
+/* Line numbers */
+.custom-theme-active .monaco-editor .line-numbers {
+  color: your-color !important;
+}
+
+/* Current line highlight */
+.custom-theme-active .monaco-editor .current-line {
+  background: your-color !important;
+}
+
+/* Cursor styling */
+.custom-theme-active .monaco-editor .cursor {
+  background-color: your-color !important;
+  border-color: your-color !important;
+  width: 3px !important;
+}
+
+/* Scrollbar customization */
+.custom-theme-active .monaco-editor .monaco-scrollable-element > .scrollbar > .slider {
+  background: your-gradient !important;
+  border-radius: 8px !important;
+}
+```
+
+### Panel Customization
+
+```css
+/* Scripts and settings panels */
+.custom-theme-active .scripts-panel,
+.custom-theme-active .settings-panel {
+  background: your-background;
+  border-left: 3px solid your-accent-color;
+}
+
+/* Search box in scripts panel */
+.custom-theme-active .search-box {
+  background: your-color;
+  border-bottom: 2px solid your-accent;
+}
+
+/* Script list items */
+.custom-theme-active .scripts-list li {
+  background: your-item-background;
+  transition: all 0.3s ease;
+}
+
+.custom-theme-active .scripts-list li:hover {
+  background: your-hover-color;
+  transform: translateX(4px);
+}
+```
+
+## 🎨 Advanced Theming Techniques
+
+### Gradients and Animations
+
+```css
+/* Animated gradients */
+.custom-theme-active .action-button {
+  background: linear-gradient(45deg, #667eea, #764ba2, #667eea);
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Glowing effects */
+.custom-theme-active .tab.active {
+  box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+}
+```
+
+### Pseudo-elements for Decorations
+
+```css
+/* Add decorative elements */
+.custom-theme-active .tab::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 8px;
+  width: 3px;
+  height: 20px;
+  background: linear-gradient(to bottom, #667eea, #764ba2);
+  border-radius: 2px;
+}
+
+/* Mountain silhouette effect */
+.custom-theme-active .top-bar::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: repeating-linear-gradient(45deg, #4a5568, #4a5568 10px, #2d3748 10px, #2d3748 20px);
+}
+```
+
+### Interactive Elements
+
+```css
+/* Hover effects with transforms */
+.custom-theme-active .action-button:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Shimmer effect */
+.custom-theme-active .action-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.custom-theme-active .action-button:hover::before {
+  left: 100%;
+}
+```
+
+## 🌟 Theme Examples
+
+### 1. Cyberpunk Theme
+```css
+/* Theme: Cyberpunk */
+.custom-theme-active .editor-container {
+  background: linear-gradient(135deg, #0f0f23 0%, #1a0033 100%);
+}
+
+.custom-theme-active .action-button {
+  background: linear-gradient(135deg, #ff00ff 0%, #00ffff 100%);
+  box-shadow: 0 0 20px rgba(255, 0, 255, 0.3);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+```
+
+### 2. Forest Theme
+```css
+/* Theme: Forest */
+.custom-theme-active .editor-container {
+  background: linear-gradient(135deg, #1b4332 0%, #2d5016 100%);
+}
+
+.custom-theme-active .tab.active {
+  background: linear-gradient(135deg, #52b788 0%, #74c69d 100%);
+  color: #081c15;
+}
+```
+
+### 3. Ocean Theme
+```css
+/* Theme: Ocean */
+.custom-theme-active .editor-container {
+  background: linear-gradient(135deg, #001845 0%, #003f88 50%, #0077be 100%);
+}
+
+.custom-theme-active .action-button {
+  background: linear-gradient(135deg, #4cc9f0 0%, #7209b7 100%);
+}
+```
+
+## 📱 Responsive Design
+
+```css
+/* Tablet breakpoint */
+@media (max-width: 1024px) {
+  .custom-theme-active .scripts-panel,
+  .custom-theme-active .settings-panel {
+    width: 200px;
+  }
+}
+
+/* Mobile breakpoint */
+@media (max-width: 768px) {
+  .custom-theme-active .tab {
+    min-width: 100px;
+    padding: 0 6px;
+  }
+  
+  .custom-theme-active .action-button {
+    padding: 2px 6px;
+    font-size: 11px;
+  }
+}
+```
+
+## 🔧 Tailwind CSS Integration
+
+The theming system includes Tailwind CSS utility classes for enhanced styling:
+
+```css
+/* Use Tailwind utilities in your themes */
+.custom-theme-active .tw-button {
+  @apply px-4 py-2 rounded-lg shadow-lg transition-all duration-300 ease-in-out hover:shadow-xl;
+}
+
+.custom-theme-active .tw-input {
+  @apply px-3 py-2 rounded-md border-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-200;
+}
+
+.custom-theme-active .tw-card {
+  @apply bg-gray-800 rounded-xl shadow-2xl backdrop-blur-sm border border-gray-700;
+}
+```
+
+## 🎯 Connection Status Styling
+
+```css
+/* Style different connection states */
+.custom-theme-active .action-button.disconnected {
+  background: linear-gradient(135deg, #6b7280 0%, #9ca3af 100%);
+}
+
+.custom-theme-active .action-button.connecting {
+  background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+  animation: pulse 2s infinite;
+}
+
+.custom-theme-active .action-button.connected {
+  background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+```
+
+## 🔔 Notification Styling
+
+```css
+/* Customize notification appearance */
+.custom-theme-active .notification {
+  background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+  border-radius: 12px;
+  backdrop-filter: blur(16px);
+}
+
+.custom-theme-active .notification.success {
+  border-left: 6px solid #10b981;
+}
+
+.custom-theme-active .notification.error {
+  border-left: 6px solid #ef4444;
+}
+
+.custom-theme-active .notification.warning {
+  border-left: 6px solid #f59e0b;
+}
+```
+
+## 🐛 Troubleshooting
+
+### Common Issues
+
+1. **Theme not loading**: Ensure the CSS file is in the `theme` folder next to the executable
+2. **Styles not applying**: Make sure all selectors start with `.custom-theme-active`
+3. **Monaco editor styles**: Remember to use `!important` for Monaco editor overrides
+4. **Performance issues**: Avoid excessive animations and complex selectors
+
+### Debugging Tips
+
+```css
+/* Add debug borders to see element boundaries */
+.custom-theme-active * {
+  border: 1px solid red !important;
+}
+
+/* Test if your theme is loaded */
+.custom-theme-active .editor-container {
+  border: 5px solid lime !important;
+}
+```
+
+## 📝 Best Practices
+
+1. **Theme Identification**: Always include a theme name comment at the top
+2. **Consistent Naming**: Use descriptive CSS class names
+3. **Performance**: Minimize complex animations and large background images
+4. **Accessibility**: Ensure sufficient color contrast
+5. **Testing**: Test your theme with different window sizes
+6. **Fallbacks**: Provide fallback colors for gradients
+
+## 🎨 Color Palette Suggestions
+
+### Dark Themes
+- **Background**: `#1a1a2e`, `#16213e`, `#0f0f23`
+- **Accent**: `#667eea`, `#764ba2`, `#f093fb`
+- **Text**: `#e2e8f0`, `#f7fafc`, `#ffffff`
+
+### Light Themes  
+- **Background**: `#f7fafc`, `#edf2f7`, `#e2e8f0`
+- **Accent**: `#4299e1`, `#667eea`, `#9f7aea`
+- **Text**: `#2d3748`, `#4a5568`, `#1a202c`
+
+## 🚀 Advanced Examples
+
+Check out the included `po.css` theme for a complete example featuring:
+- Mountain landscape backgrounds
+- Zen-inspired color palette
+- Bamboo-themed tabs
+- Animated elements
+- Responsive design
+- Complete component styling
+
+## 📚 Resources
+
+- [CSS Gradients Generator](https://cssgradient.io/)
+- [Color Palette Tools](https://coolors.co/)
+- [CSS Animation Library](https://animate.style/)
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+
+---
+
+**Happy Theming!** 🎨 Create beautiful, unique themes that make your coding experience truly yours.
