@@ -423,7 +423,408 @@ Check out the included `po.css` theme for a complete example featuring:
 - Animated elements
 - Responsive design
 - Complete component styling
+```css
+/* Theme: Po (Kung Fu Panda) */
 
+/* 
+Po Theme - Inspired by Kung Fu Panda
+Features: Mountain landscapes, zen colors, and panda-inspired elements
+*/
+
+/* Main container with mountain background */
+.custom-theme-active .editor-container {
+  background: linear-gradient(135deg, #2C3E2D 0%, #1a1a2e 50%, #16213e 100%);
+  position: relative;
+}
+
+.custom-theme-active .editor-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(to right, 
+    rgba(44, 62, 45, 0.9) 0%, 
+    rgba(58, 78, 65, 0.7) 25%, 
+    rgba(72, 94, 85, 0.5) 50%, 
+    rgba(86, 110, 105, 0.7) 75%, 
+    rgba(44, 62, 45, 0.9) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Mountain silhouette effect on top bar */
+.custom-theme-active .top-bar {
+  background: linear-gradient(135deg, #2C3E2D 0%, #3A4E41 100%);
+  border-bottom: 2px solid #4A5D4A;
+  position: relative;
+  z-index: 2;
+}
+
+.custom-theme-active .top-bar::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: repeating-linear-gradient(
+    45deg,
+    #4A5D4A,
+    #4A5D4A 10px,
+    #5A6D5A 10px,
+    #5A6D5A 20px
+  );
+}
+
+/* Zen-inspired logo styling */
+.custom-theme-active .logo {
+  color: #E8D5B7;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.custom-theme-active .theme-indicator {
+  background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
+  color: #F5E6D3;
+  border: 1px solid #CD853F;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Panda-inspired icon buttons */
+.custom-theme-active .icon-button {
+  background: rgba(232, 213, 183, 0.1);
+  border: 1px solid rgba(232, 213, 183, 0.2);
+  border-radius: 8px;
+  color: #E8D5B7;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.custom-theme-active .icon-button:hover {
+  background: rgba(232, 213, 183, 0.2);
+  color: #F5E6D3;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.custom-theme-active .icon-button.active {
+  background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
+  color: #F5E6D3;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Bamboo-inspired tabs */
+.custom-theme-active .tabs-bar {
+  background: linear-gradient(135deg, #2C3E2D 0%, #3A4E41 100%);
+  border-bottom: 1px solid #4A5D4A;
+}
+
+.custom-theme-active .tab {
+  background: rgba(44, 62, 45, 0.8);
+  border: 1px solid rgba(74, 93, 74, 0.5);
+  border-radius: 8px 8px 0 0;
+  color: #E8D5B7;
+  margin-right: 2px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.custom-theme-active .tab::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 8px;
+  width: 3px;
+  height: 20px;
+  background: linear-gradient(to bottom, #8B4513, #A0522D);
+  border-radius: 2px;
+  opacity: 0.7;
+}
+
+.custom-theme-active .tab:hover {
+  background: rgba(58, 78, 65, 0.9);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.custom-theme-active .tab.active {
+  background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
+  color: #F5E6D3;
+  border-bottom: 3px solid #D2691E;
+  box-shadow: 0 -2px 8px rgba(139, 69, 19, 0.3);
+}
+
+.custom-theme-active .tab-name {
+  font-weight: 600;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.custom-theme-active .new-tab {
+  background: rgba(232, 213, 183, 0.1);
+  border: 1px solid rgba(232, 213, 183, 0.2);
+  border-radius: 6px;
+  color: #E8D5B7;
+  transition: all 0.3s ease;
+}
+
+.custom-theme-active .new-tab:hover {
+  background: rgba(232, 213, 183, 0.2);
+  color: #F5E6D3;
+  transform: scale(1.1);
+}
+
+/* Zen garden editor wrapper */
+.custom-theme-active .editor-wrapper {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border: 2px solid #4A5D4A;
+  border-radius: 8px;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.custom-theme-active .editor-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(139, 69, 19, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 60%, rgba(160, 82, 45, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(74, 93, 74, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Monaco editor with zen aesthetics */
+.custom-theme-active .monaco-editor .monaco-editor-background {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%) !important;
+}
+
+.custom-theme-active .monaco-editor .margin {
+  background: linear-gradient(to right, #2C3E2D, #1a1a2e) !important;
+}
+
+.custom-theme-active .monaco-editor .line-numbers {
+  color: #8B9A8B !important;
+  font-weight: 600 !important;
+}
+
+.custom-theme-active .monaco-editor .current-line {
+  background: rgba(139, 69, 19, 0.15) !important;
+  box-shadow: inset 0 0 0 1px rgba(139, 69, 19, 0.2) !important;
+}
+
+.custom-theme-active .monaco-editor .cursor {
+  background-color: #D2691E !important;
+  border-color: #D2691E !important;
+  width: 3px !important;
+  box-shadow: 0 0 8px rgba(210, 105, 30, 0.5) !important;
+}
+
+/* Stylized scrollbars */
+.custom-theme-active .monaco-editor .monaco-scrollable-element > .scrollbar > .slider {
+  background: linear-gradient(135deg, #8B4513, #A0522D) !important;
+  border-radius: 8px !important;
+  border: 2px solid rgba(232, 213, 183, 0.2) !important;
+}
+
+.custom-theme-active .monaco-editor .monaco-scrollable-element > .scrollbar > .slider:hover {
+  background: linear-gradient(135deg, #A0522D, #CD853F) !important;
+  border-color: rgba(232, 213, 183, 0.4) !important;
+}
+
+/* Mountain-inspired panels */
+.custom-theme-active .scripts-panel,
+.custom-theme-active .settings-panel {
+  background: linear-gradient(135deg, #2C3E2D 0%, #1a1a2e 100%);
+  border-left: 3px solid #8B4513;
+  border-radius: 8px 0 0 8px;
+  box-shadow: -4px 0 12px rgba(0, 0, 0, 0.3);
+}
+
+.custom-theme-active .search-box {
+  background: rgba(139, 69, 19, 0.2);
+  border-bottom: 2px solid #8B4513;
+  border-radius: 8px 8px 0 0;
+}
+
+.custom-theme-active .search-box input {
+  background: rgba(26, 26, 46, 0.8);
+  border: 2px solid #4A5D4A;
+  border-radius: 6px;
+  color: #E8D5B7;
+  font-weight: 500;
+}
+
+.custom-theme-active .search-box input:focus {
+  border-color: #8B4513;
+  box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.2);
+}
+
+.custom-theme-active .scripts-list li,
+.custom-theme-active .settings-section {
+  background: rgba(44, 62, 45, 0.3);
+  border-radius: 6px;
+  margin: 4px 8px;
+  transition: all 0.3s ease;
+}
+
+.custom-theme-active .scripts-list li:hover {
+  background: rgba(139, 69, 19, 0.3);
+  transform: translateX(4px);
+  box-shadow: 2px 0 8px rgba(139, 69, 19, 0.2);
+}
+
+/* Zen action buttons */
+.custom-theme-active .bottom-bar {
+  background: linear-gradient(135deg, #2C3E2D 0%, #3A4E41 100%);
+  border-top: 2px solid #4A5D4A;
+}
+
+.custom-theme-active .action-button {
+  background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
+  border: 2px solid rgba(232, 213, 183, 0.3);
+  border-radius: 8px;
+  color: #F5E6D3;
+  font-weight: 600;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.custom-theme-active .action-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.custom-theme-active .action-button:hover::before {
+  left: 100%;
+}
+
+.custom-theme-active .action-button:hover {
+  background: linear-gradient(135deg, #A0522D 0%, #CD853F 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(139, 69, 19, 0.4);
+  border-color: rgba(232, 213, 183, 0.5);
+}
+
+.custom-theme-active .action-button:active {
+  transform: translateY(0);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Connection status with zen colors */
+.custom-theme-active .action-button.disconnected {
+  background: linear-gradient(135deg, #696969 0%, #808080 100%);
+  color: #E8D5B7;
+}
+
+.custom-theme-active .action-button.connecting {
+  background: linear-gradient(135deg, #DAA520 0%, #FFD700 100%);
+  color: #2C3E2D;
+  animation: zen-pulse 2s infinite;
+}
+
+.custom-theme-active .action-button.connected {
+  background: linear-gradient(135deg, #228B22 0%, #32CD32 100%);
+  color: #F5E6D3;
+  box-shadow: 0 0 16px rgba(34, 139, 34, 0.4);
+}
+
+@keyframes zen-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Enhanced notifications with mountain theme */
+.custom-theme-active .notification {
+  background: linear-gradient(135deg, #2C3E2D 0%, #1a1a2e 100%);
+  border: 2px solid #8B4513;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(16px);
+}
+
+.custom-theme-active .notification:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 32px rgba(139, 69, 19, 0.3);
+}
+
+.custom-theme-active .notification.success {
+  border-left: 6px solid #32CD32;
+  background: linear-gradient(135deg, rgba(50, 205, 50, 0.1) 0%, #2C3E2D 100%);
+}
+
+.custom-theme-active .notification.error {
+  border-left: 6px solid #DC143C;
+  background: linear-gradient(135deg, rgba(220, 20, 60, 0.1) 0%, #2C3E2D 100%);
+}
+
+.custom-theme-active .notification.warning {
+  border-left: 6px solid #FFD700;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, #2C3E2D 100%);
+}
+
+.custom-theme-active .notification-message {
+  color: #F5E6D3;
+  font-weight: 700;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.custom-theme-active .notification-details {
+  color: #E8D5B7;
+}
+
+/* Zen-inspired settings */
+.custom-theme-active .settings-header {
+  background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
+  color: #F5E6D3;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  border-radius: 8px 8px 0 0;
+}
+
+.custom-theme-active .setting-item select {
+  background: linear-gradient(135deg, #1a1a2e 0%, #2C3E2D 100%);
+  border: 2px solid #8B4513;
+  color: #E8D5B7;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.custom-theme-active .setting-item select:focus {
+  border-color: #D2691E;
+  box-shadow: 0 0 0 3px rgba(210, 105, 30, 0.2);
+}
+
+.custom-theme-active .theme-status.success {
+  background: linear-gradient(135deg, rgba(50, 205, 50, 0.2) 0%, rgba(44, 62, 45, 0.5) 100%);
+  border: 2px solid #32CD32;
+  color: #98FB98;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive mountain landscape */
+@media (max-width: 768px) {
+  .custom-theme-active .editor-container::before {
+    height: 40px;
+  }
+  
+  .custom-theme-active .tab::before {
+    width: 2px;
+    height: 16px;
+  }
+}```
 ## 📚 Resources
 
 - [CSS Gradients Generator](https://cssgradient.io/)
